@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fasteda"
+name = "fast-eda"
 version = "0.1.0"
 description = "🚀 One-line data exploration for developers & data scientists"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "FastEDA Contributors"}
+    {name = "Dawit Worku", email = "dawitworkujima@gmail.com"}
 ]
 keywords = ["data", "eda", "exploratory", "analysis", "visualization", "cli"]
 classifiers = [
@@ -46,9 +46,10 @@ dev = [
 fasteda = "fasteda.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/fasteda/fasteda"
-Documentation = "https://github.com/fasteda/fasteda#readme"
-Repository = "https://github.com/fasteda/fasteda"
+Homepage = "https://github.com/Dawaman43/fasteda"
+Documentation = "https://github.com/Dawaman43/fasteda#readme"
+Repository = "https://github.com/Dawaman43/fasteda"
+Issues = "https://github.com/Dawaman43/fasteda/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/fasteda"]
