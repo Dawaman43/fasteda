@@ -46,14 +46,24 @@ def _save_json_report(results: Dict[str, Any], filepath: Path):
 
 def _make_serializable(obj):
     """Convert objects to JSON-serializable format."""
+    import numpy as np
+    
     if isinstance(obj, pd.DataFrame):
-        return obj.to_dict()
+        return obj.to_dict(orient='records')
+    elif isinstance(obj, (pd.Series, np.ndarray)):
+        return obj.tolist()
     elif isinstance(obj, dict):
-        return {k: _make_serializable(v) for k, v in obj.items()}
+        return {str(k): _make_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [_make_serializable(item) for item in obj]
+    elif isinstance(obj, (np.integer, np.floating)):
+        return float(obj)
+    elif hasattr(obj, 'item'):  # numpy scalar
+        return obj.item()
+    elif pd.api.types.is_numeric_dtype(type(obj)):
+        return float(obj)
     else:
-        return obj
+        return str(obj) if not isinstance(obj, (str, int, float, bool, type(None))) else obj
 
 
 def _save_text_report(results: Dict[str, Any], filepath: Path):
