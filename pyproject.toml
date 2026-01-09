@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fast-eda"
+name = "speedyeda"
 version = "0.1.0"
 description = "🚀 One-line data exploration for developers & data scientists"
 readme = "README.md"
